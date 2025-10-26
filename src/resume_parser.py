@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 from typing import Union
 import docx
-from PyPDF2 import PdfReader
+import fitz  # PyMuPDF
 
 
 class ResumeParser:
@@ -57,12 +57,13 @@ class ResumeParser:
 
     @staticmethod
     def _parse_pdf(file_path: Path) -> str:
-        """Parse a PDF file."""
+        """Parse a PDF file using PyMuPDF."""
         try:
-            reader = PdfReader(file_path)
+            doc = fitz.open(file_path)
             text = []
-            for page in reader.pages:
-                text.append(page.extract_text())
+            for page in doc:
+                text.append(page.get_text())
+            doc.close()
             return "\n".join(text)
         except Exception as e:
             raise Exception(f"Error parsing PDF file: {str(e)}")

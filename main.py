@@ -7,7 +7,7 @@ This script provides a command-line interface to customize resumes using Google 
 import sys
 import argparse
 from pathlib import Path
-from resume_customizer.app import ResumeCustomizer
+from src.app import ResumeCustomizer
 
 
 def main():

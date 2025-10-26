@@ -159,7 +159,7 @@ Now generate the complete LaTeX code for the customized resume. Output ONLY the 
 
     def _construct_validation_prompt(self, latex_code: str, template: str) -> str:
         """Construct the validation prompt for the second LLM pass."""
-        prompt = f"""You are a LaTeX expert and resume quality reviewer. Your task is to review and enhance the generated LaTeX resume code.
+        prompt = rf"""You are a LaTeX expert and resume quality reviewer. Your task is to review and enhance the generated LaTeX resume code.
 
 ORIGINAL TEMPLATE FOR REFERENCE:
 {template}

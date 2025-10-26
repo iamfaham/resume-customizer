@@ -3,7 +3,7 @@ Example script demonstrating how to use the Resume Customizer programmatically.
 """
 
 import os
-from resume_customizer.app import ResumeCustomizer, customize_resume_simple
+from src.app import ResumeCustomizer, customize_resume_simple
 
 
 def example_basic_usage():

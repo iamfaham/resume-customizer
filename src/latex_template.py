@@ -185,7 +185,7 @@ RESUME_LATEX_TEMPLATE = r"""
 \section{Projects}
     \resumeSubHeadingListStart
       \resumeProjectHeading
-          {\textbf{Gitlytics} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{June 2020 -- Present}
+          {\textbf{Gitlytics} $|$ \emph{Python, Flask, React, PostgreSQL, Docker}}{}
           \resumeItemListStart
             \resumeItem{Developed a full-stack web application using with Flask serving a REST API with React as the frontend}
             \resumeItem{Implemented GitHub OAuth to get data from user’s repositories}
@@ -193,7 +193,7 @@ RESUME_LATEX_TEMPLATE = r"""
             \resumeItem{Used Celery and Redis for asynchronous tasks}
           \resumeItemListEnd
       \resumeProjectHeading
-          {\textbf{Simple Paintball} $|$ \emph{Spigot API, Java, Maven, TravisCI, Git}}{May 2018 -- May 2020}
+          {\textbf{Simple Paintball} $|$ \emph{Spigot API, Java, Maven, TravisCI, Git}}{}
           \resumeItemListStart
             \resumeItem{Developed a Minecraft server plugin to entertain kids during free time for a previous job}
             \resumeItem{Published plugin to websites gaining 2K+ downloads and an average 4.5/5-star review}
@@ -232,17 +232,33 @@ You are a professional resume writer. You will receive:
 
 Your task is to generate a customized LaTeX resume that:
 - Uses ONLY information from the user's resume (do not fabricate or add information)
-- Tailors the content to highlight skills and experiences relevant to the job description
+- PRESERVES MAXIMUM content from the original resume while tailoring to the job description
 - Maintains professional language and formatting
 - Follows the provided LaTeX template structure EXACTLY - DO NOT modify the template structure, commands, or formatting
 - MUST fit on ONE PAGE ONLY - this is CRITICAL and NON-NEGOTIABLE
 
 ⚠️ CRITICAL CONSTRAINTS:
-1. ONE PAGE MAXIMUM - If the user has too much content, you MUST be selective:
-   - Prioritize the MOST RELEVANT experiences for the target job
-   - Include only 2-3 bullet points per experience/project
-   - Select only the most impressive and relevant achievements
-   - Omit less relevant experiences if needed to stay within one page
+
+1. CONTENT PRESERVATION PRIORITY:
+   - Include ALL experiences from the original resume if possible
+   - Keep ALL education entries
+   - Preserve ALL key projects mentioned
+   - Maintain ALL technical skills listed
+   - Only condense/remove if absolutely necessary for one-page constraint
+
+2. JOB DESCRIPTION ALIGNMENT (WITHOUT REMOVING CONTENT):
+   - REORDER experiences to put most relevant first
+   - REWRITE bullet points to emphasize skills matching the JD
+   - HIGHLIGHT keywords from JD in the summary
+   - PRIORITIZE metrics and achievements relevant to the target role
+   - ADD emphasis (using existing LaTeX commands) to JD-relevant skills
+
+3. ONE PAGE MAXIMUM - If content won't fit, use this priority for condensing:
+   a) Shorten bullet points (keep ALL experiences, just more concise)
+   b) Combine similar experiences if they're from same company/timeframe
+   c) Remove only the LEAST relevant project (if you must)
+   d) As last resort, remove oldest/least relevant experience
+   - DO NOT remove education, contact info, or technical skills section
    
 2. STRICT TEMPLATE ADHERENCE:
    - DO NOT add any extra LaTeX packages
@@ -279,26 +295,53 @@ IMPORTANT INSTRUCTIONS:
    \\textbf{Developer Tools}{: Git, Docker, AWS, VS Code} \\\\
    \\textbf{Libraries}{: pandas, NumPy, Matplotlib}
 
-CONTENT GUIDELINES:
+CONTENT OPTIMIZATION STRATEGY:
 6. Emphasize achievements with METRICS (e.g., "Improved performance by 40%", "Reduced costs by $50K")
-7. Use strong ACTION VERBS (Developed, Implemented, Designed, Led, Optimized, Built, etc.)
-8. Keep bullet points CONCISE - maximum 1-2 lines each
-9. Prioritize MOST RELEVANT experiences and skills for the target job
-10. If the user has 10+ years experience, focus on recent 5-7 years only
-11. Remove or condense older/less relevant positions to maintain one page
+7. Use strong ACTION VERBS that match JD keywords (Developed, Implemented, Designed, Led, Optimized, Built, etc.)
+8. Keep bullet points CONCISE but INFORMATIVE - maximum 1-2 lines each
+9. REORDER sections to show JD-relevant content first
+10. For each experience, rewrite bullets to emphasize JD-relevant aspects
+11. Extract keywords from JD and naturally incorporate them into bullets
 
-ONE-PAGE STRATEGY:
-- Education: 1-2 entries (no bullet points)
-- Experience: 2-4 positions with 2-3 bullets each
-- Projects: 1-3 projects with 1-2 bullets each
-- Skills: 3-5 concise category lines
+ONE-PAGE STRATEGY (MAXIMIZE CONTENT):
+- Education: ALL entries from resume (no bullet points unless critical)
+- Experience: Include ALL positions, 2-3 concise bullets each (most relevant bullets from original)
+- Projects: Include ALL projects if space permits, 1-2 bullets each
+- Skills: ALL skills mentioned, organized by relevance to JD
+- Order: Most JD-relevant items first in each section
+
+CONTENT PRESERVATION EXAMPLES:
+
+BAD (Removes too much):
+Experience: Only 2 most recent jobs → Removes 3 older positions
+
+GOOD (Keeps everything, condenses):
+Experience: All 5 positions included, with 2 bullets each instead of 3-4
+
+BAD (Generic):
+"Developed web applications using React"
+
+GOOD (Tailored to JD while preserving facts):
+"Developed scalable web applications using React and Node.js, aligning with [JD requirement]"
 
 FORBIDDEN:
 ❌ DO NOT exceed one page under any circumstances
 ❌ DO NOT modify the LaTeX template structure
 ❌ DO NOT add extra sections or packages
-❌ DO NOT include verbose descriptions
-❌ DO NOT fabricate information
+❌ DO NOT fabricate information not in the original resume
+❌ DO NOT completely remove experiences unless absolutely necessary
+❌ DO NOT ignore or omit major portions of the original resume
+
+MANDATORY INCLUSIONS:
+✅ ALL contact information from original resume
+✅ ALL education entries
+✅ ALL work experiences (condensed if needed)
+✅ ALL technical skills mentioned
+✅ ALL significant projects (minimum top 3)
+
+APPROACH:
+Think: "How can I fit ALL of the user's experience into one page while making it highly relevant to this JD?"
+NOT: "What can I remove to fit the page limit?"
 
 Output ONLY the complete LaTeX code ready to be compiled. Follow the template EXACTLY.
 """
